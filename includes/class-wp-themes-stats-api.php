@@ -1,9 +1,15 @@
 <?php
 /**
- * The WordPress.org API Call from ShortCode.
+ * Calling W.ORG API Response.
  *
- * @author Brainstormforce
- * @package WP_STATS/API Call
+ * @package WP Themes Active Stats
+ * @author Brainstorm Force
+ */
+
+/**
+ * Helper class for the ActiveCampaign API.
+ *
+ * @since 1.0.0
  */
 class WP_Themes_Stats_Api {
 	/**
@@ -16,16 +22,15 @@ class WP_Themes_Stats_Api {
 	/**
 	 * Get the Theme Details.
 	 *
-	 * @param int $atts Get attributes for the Theme name and Author.
-	 * @param int $api_params Get attributes Theme Details.
 	 * @param int $action Get attributes Theme Details.
+	 * @param int $api_params Get attributes Theme Details.
 	 */
 	function wp_isa_call_wp_api_themes( $action, $api_params = array() ) {
-
-		if ( false === ( $value = get_transient( 'bsf_active_status' ) ) ) {
+		$value = get_transient( 'bsf_active_status' );
+		if ( false === $value ) {
 
 			$url = 'https://api.wordpress.org/themes/info/1.0/';
-			if ( $ssl = wp_http_supports( array( 'ssl' ) ) ) {
+			if ( wp_http_supports( array( 'ssl' ) ) == $ssl ) {
 				 $url = set_url_scheme( $url, 'https' );
 			}
 			$args = (object) $api_params;
