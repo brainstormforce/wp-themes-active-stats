@@ -6,19 +6,19 @@
 			<?php do_settings_sections( 'wp-active-stats-settings-group' ); ?>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><?php _e( 'WP Theme Name', 'bsf-docs' ); ?></th>
+					<th scope="row"><?php _e( 'WP Theme Name', 'wp-themes-stats' ); ?></th>
 					<td>
 						<input type="text" class="code" name="wp_theme_name" value="<?php echo get_option( 'wp_theme_name' ); ?> "/>
 					</td>
 				</tr>	
 				<tr valign="top">
-					<th scope="row"><?php _e( 'WP Theme Author', 'bsf-docs' ); ?></th>
+					<th scope="row"><?php _e( 'WP Theme Author', 'wp-themes-stats' ); ?></th>
 					<td>
 						<input type="text" class="code" name="wp_theme_author" value="<?php echo get_option( 'wp_theme_author' ); ?> "/>
 					</td>
 				</tr>	
 				<tr valign="top">
-					<th scope="row"><?php _e( 'WP Theme Tag', 'bsf-docs' ); ?></th>
+					<th scope="row"><?php _e( 'WP Theme Tag', 'wp-themes-stats' ); ?></th>
 					<td>
 						<input type="text" class="code" name="wp_theme_tag" value="<?php echo get_option( 'wp_theme_tag' ); ?> "/>
 					</td>
@@ -35,7 +35,7 @@
 		<div class="wp-active-stats-container">
 			<table class="form-table">
 				 <tr valign="top">
-					 <th scope="row"><?php _e( 'Display Theme Active Install', 'wp-active-stats' ); ?></th>
+					 <th scope="row"><?php _e( 'Display Theme Active Install', 'wp-themes-stats' ); ?></th>
 					<td>
 						<div class="wp-stats-shortcode-container wp-ui-text-highlight">
 						   [wp_theme_active_install]

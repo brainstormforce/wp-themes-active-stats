@@ -65,10 +65,6 @@ class WP_themes_stats_api  {
         else {
             return 'Please Verify Theme Details!';
         }
-        // echo "<pre>";
-        // print_r($themes_list);
-        // echo "</pre>";
-
     }
 }
 
