@@ -12,4 +12,6 @@
  * @package WP-Themes-Stats
  */
 // Including class doc loader.
+
 require_once 'classes/class-wp-themes-stats-loader.php';
+
