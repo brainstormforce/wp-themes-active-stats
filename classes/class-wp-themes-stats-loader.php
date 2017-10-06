@@ -57,7 +57,7 @@ if ( ! class_exists( 'WP_Themes_Stats_Loader' ) ) {
 			define( 'WP_THEMES_STATS_DIR_NAME', plugin_basename( $file ) );
 			define( 'WP_THEMES_STATS_BASE_FILE', trailingslashit( $file ) . WP_THEMES_STATS_DIR_NAME . '.php' );
 			define( 'WP_THEMES_STATS_BASE_DIR', plugin_dir_path( WP_THEMES_STATS_BASE_FILE ) );
-			define( 'WP_THEMES_STATS_BASE_URL', plugins_url( '/',  WP_THEMES_STATS_BASE_FILE ) );
+			define( 'WP_THEMES_STATS_BASE_URL', plugins_url( '/', WP_THEMES_STATS_BASE_FILE ) );
 		}
 
 		/**

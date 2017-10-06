@@ -26,20 +26,20 @@ class WP_Themes_Stats_Api {
 	 * @param int $api_params Get attributes Theme Details.
 	 */
 	function get_theme_activate_installs( $action, $api_params = array() ) {
-		$theme_slug 		= isset( $api_params['theme'] ) ? $api_params['theme'] : '';
-		$activet_installs 	= get_transient( "bsf_active_status_$theme_slug" );
+		$theme_slug       = isset( $api_params['theme'] ) ? $api_params['theme'] : '';
+		$activet_installs = get_transient( "bsf_active_status_$theme_slug" );
 
 		if ( false === $activet_installs ) {
 
 			$url = 'https://api.wordpress.org/themes/info/1.0/';
 			if ( wp_http_supports( array( 'ssl' ) ) ) {
-				 $url = set_url_scheme( $url, 'https' );
+				$url = set_url_scheme( $url, 'https' );
 			}
 
-			$args = (object) $api_params;
+			$args      = (object) $api_params;
 			$http_args = array(
 				'body' => array(
-					'action' => $action,
+					'action'  => $action,
 					'timeout' => 15,
 					'request' => serialize( $args ),
 				),
@@ -50,7 +50,7 @@ class WP_Themes_Stats_Api {
 			if ( ! is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) === 200 ) {
 				$response = maybe_unserialize( wp_remote_retrieve_body( $request ) );
 
-				$themes_list 	= ( is_object( $response ) && isset( $response->themes ) ) ? $response->themes : array();
+				$themes_list = ( is_object( $response ) && isset( $response->themes ) ) ? $response->themes : array();
 
 				// If theme list is not returned, retuen false.
 				if ( ! isset( $themes_list[0] ) ) {
@@ -58,9 +58,9 @@ class WP_Themes_Stats_Api {
 				}
 
 				$activet_installs = $themes_list[0]->active_installs;
-	            set_transient( "bsf_active_status_$theme_slug", $activet_installs, 604800 );
+				set_transient( "bsf_active_status_$theme_slug", $activet_installs, 604800 );
 			}
-		} 
+		}
 
 		return $activet_installs;
 	}
@@ -74,14 +74,14 @@ class WP_Themes_Stats_Api {
 
 		$atts = shortcode_atts(
 			array(
-				'theme_name' 	=> isset( $atts['theme_name'] ) ? $atts['theme_name'] : '',
-				'theme_author' 	=> isset( $atts['theme_author'] ) ? $atts['theme_author'] : '',
+				'theme_name'   => isset( $atts['theme_name'] ) ? $atts['theme_name'] : '',
+				'theme_author' => isset( $atts['theme_author'] ) ? $atts['theme_author'] : '',
 			), $atts
 		);
 
-		$active_installs 	= false;
-		$wp_theme_name 		= $atts['theme_name'];
-		$wp_theme_author 	= $atts['theme_author'];
+		$active_installs = false;
+		$wp_theme_name   = $atts['theme_name'];
+		$wp_theme_author = $atts['theme_author'];
 
 		// bail early if theme name is not provided.
 		if ( '' == $wp_theme_name ) {
@@ -90,18 +90,18 @@ class WP_Themes_Stats_Api {
 
 		if ( '' != $wp_theme_name && false != $wp_theme_name ) {
 			$api_params = array(
-				'theme'     => $wp_theme_name,
-				'author'    => $wp_theme_author,
-				'per_page'  => 1,
-				'fields'    => array(
-					'homepage'          => false,
-					'description'       => false,
-					'screenshot_url'    => false,
-					'active_installs'   => true,
+				'theme'    => $wp_theme_name,
+				'author'   => $wp_theme_author,
+				'per_page' => 1,
+				'fields'   => array(
+					'homepage'        => false,
+					'description'     => false,
+					'screenshot_url'  => false,
+					'active_installs' => true,
 				),
 			);
 
-			$active_installs 	= $this->get_theme_activate_installs( 'query_themes', $api_params );
+			$active_installs = $this->get_theme_activate_installs( 'query_themes', $api_params );
 
 			// return if we get false response.
 			if ( false == $active_installs ) {
