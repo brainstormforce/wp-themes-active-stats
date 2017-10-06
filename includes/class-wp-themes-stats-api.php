@@ -25,8 +25,13 @@ class WP_Themes_Stats_Api {
 	 * @param int $action Get attributes Theme Details.
 	 * @param int $api_params Get attributes Theme Details.
 	 */
-	function wp_isa_call_wp_api_themes( $action, $api_params = array() ) {
-		$value = get_transient( 'bsf_active_status' );
+	function wp_isa_call_wp_api_themes( $action, $atts, $api_params = array() ) {
+		$value = get_transient( 'bsf_active_status_$slug' );
+
+		//var_dump( $atts );
+
+		$slug = $atts['theme_name'];
+		//echo $slug;
 		if ( false === $value ) {
 
 			$url = 'https://api.wordpress.org/themes/info/1.0/';
@@ -42,21 +47,20 @@ class WP_Themes_Stats_Api {
 				),
 			);
 
-						 $request = wp_remote_post( $url, $http_args );
+			$request = wp_remote_post( $url, $http_args );
 
 			if ( is_wp_error( $request ) ) {
 				return false;
 			}
-			$remote_body = maybe_unserialize( wp_remote_retrieve_body( $request ) );
+			//$remote_body = maybe_unserialize( wp_remote_retrieve_body( $request ) );
+			//update_option( 'bsf_active_install' , $remote_body );
+			//set_transient( 'bsf_active_status', $remote_body, 604800 );
 
-			update_option( 'bsf_active_install' , $remote_body );
-			set_transient( 'bsf_active_status', $remote_body, 604800 );
+			$value = maybe_unserialize( wp_remote_retrieve_body( $request ) );
+            set_transient( 'bsf_active_status_$slug', $value, 604800 );
+		} 
 
-						return $remote_body;
-		} else {
-			return get_option( 'bsf_active_install', true );
-		}
-
+		return $value;
 	}
 	/**
 	 * Display Active Install Count.
@@ -86,7 +90,7 @@ class WP_Themes_Stats_Api {
 					'active_installs'   => true,
 				),
 			);
-			$themes_object = $this->wp_isa_call_wp_api_themes( 'query_themes', $api_params );
+			$themes_object = $this->wp_isa_call_wp_api_themes( 'query_themes', $atts, $api_params );
 			$themes_list = ( is_object( $themes_object ) && isset( $themes_object->themes ) ) ? $themes_object->themes : array();
 			if ( isset( $themes_list[0] ) ) {
 				 return $themes_list[0]->active_installs;
