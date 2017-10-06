@@ -28,7 +28,6 @@ class WP_Themes_Stats_Api {
 	function get_theme_activate_installs( $action, $api_params = array() ) {
 		$theme_slug       = isset( $api_params['theme'] ) ? $api_params['theme'] : '';
 		$activet_installs = get_transient( "bsf_active_status_$theme_slug" );
-		// delete_transient( $activet_installs  );
 		if ( false === $activet_installs ) {
 
 			$url = 'https://api.wordpress.org/themes/info/1.0/';
