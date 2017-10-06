@@ -11,9 +11,9 @@ This plugin is geared towards developers with Themes in the WordPress.org reposi
 
 Here is a shortcodes available in the WP Themes Active Stats plugin.
 
-`[wp_theme_active_install theme_name='Astra' theme_author='brainstormforce']`
+`[wp_theme_active_install wp_theme_slug='astra' theme_author='brainstormforce']`
 
-1.`theme_name="Astra"`
+1.`wp_theme_slug="astra"`
 
 	Name of the Theme from w.org that you want get active install count.
 
@@ -30,7 +30,7 @@ Here is a shortcodes available in the WP Themes Active Stats plugin.
 ## Frequently Asked Questions ##
 
 1. How it works? =
-It's a shortcode. Add [wp_theme_active_install theme_name='Astra' theme_author='brainstormforce'] to a page/post.
+It's a shortcode. Add [wp_theme_active_install wp_theme_slug='astra' theme_author='brainstormforce'] to a page/post.
 
 ### Version 1.0.0 ###
 * Initial release
