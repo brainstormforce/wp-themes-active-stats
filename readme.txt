@@ -15,7 +15,7 @@ Here is a shortcodes available in the WP Themes Active Stats plugin.
 
 1.`theme_name="Astra"`
 
-	Name of the Theme from w.org that you want get active install count.
+	Name of the that you want get active install count.
 
 2.`theme_author="brainstormforce"`
 
