@@ -1,9 +1,9 @@
 # WP Themes Active Stats #
-**Contributors:** brainstormforce, aniljbsfio  
-**Tags:** wpthemes-count, active-install, stats, themes-stats    
-**Requires at least:** 3.0  
-**Tested up to:** 4.8.2    
-**Stable tag:** 1.0.0  
+**Contributors:** brainstormforce, aniljbsfio    
+**Tags:** wpthemes-count, active-install, stats, themes-stats      
+**Requires at least:** 3.0    
+**Tested up to:** 4.8.2      
+**Stable tag:** 1.0.0    
 
 ## Description ##
 
@@ -32,5 +32,5 @@ Here is a shortcodes available in the WP Themes Active Stats plugin.
 1. How it works? =
 It's a shortcode. Add [wp_theme_active_install wp_theme_slug='astra' theme_author='brainstormforce'] to a page/post.
 
-### Version 1.0.0 ###
+## Version 1.0.0 ##
 * Initial release
