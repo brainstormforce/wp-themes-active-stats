@@ -28,6 +28,8 @@ class WP_Themes_Stats_Api {
 	function get_theme_activate_installs( $action, $api_params = array() ) {
 		$theme_slug       = isset( $api_params['theme'] ) ? $api_params['theme'] : '';
 		$activet_installs = get_transient( "bsf_active_status_$theme_slug" );
+		// delete_transient( "bsf_active_status_$theme_slug" );
+		// die();
 		if ( false === $activet_installs ) {
 
 			$url = 'https://api.wordpress.org/themes/info/1.0/';
@@ -57,11 +59,11 @@ class WP_Themes_Stats_Api {
 				}
 
 				$activet_installs = $themes_list[0]->active_installs;
-				set_transient( "bsf_active_status_$theme_slug", $activet_installs, 604800 );
+				set_transient( "bsf_active_status_$theme_slug", $activet_installs, 1440 );
 			}
 		}
 
-		return $activet_installs;
+		return number_format($activet_installs);
 	}
 
 	/**
