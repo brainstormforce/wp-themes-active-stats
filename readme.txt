@@ -2,7 +2,7 @@
 Contributors: brainstormforce 
 Tags: wpthemes-count, active-install, stats, themes-stats    
 Requires at least: 3.0  
-Tested up to: 4.8.2    
+Tested up to: 5.1    
 Stable tag: 1.0.0  
 
 == Description ==
